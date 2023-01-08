@@ -1,0 +1,197 @@
+.search-form, .create-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ridesDB{
+    display: flex;
+    flex-direction: column;
+    left: 5%;
+    position: relative;
+}
+
+.people-controller{
+    display: flex;
+    justify-content: center;
+}
+
+.nav-bar-b{
+    width: 33%;
+    text-align: center;
+}
+
+.me-auto.navbar-nav{
+    width: 100%;
+}
+
+
+
+#people-count.form-control{
+    width: min-content;
+    text-align: center;
+}
+
+.btn.btn-primary{
+    background-color: #467B8C; 
+}
+
+.isUber{
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.react-datepicker__input-container, .num-seats, .luggage-space{
+    text-align: center;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    text-align: left;
+}
+
+
+
+
+.react-datepicker__input-container input, .num-seats input, .luggage-space input, .select-container{
+    border: none;
+    width: 100%;
+}
+
+#date-picker-create{
+    width: 75%;
+    height: 47px;
+}
+
+
+.requests,.confirmed {
+    display: flex;
+    flex-direction: column;
+    left: 5%;
+    position: relative;
+}
+
+.user-req p, .confirmed p{
+    margin: 0;
+}
+
+.user-req hr{
+    margin-top: 0;
+}
+
+.delete-req{
+    justify-content: center;
+}
+
+.banner{
+    background-color: #A1322A;
+}
+
+.navbar-brand{
+    color: white !important;
+}
+
+
+.navbar.navbar-expand.navbar-light{
+    background-color: #A1322A;
+    color: white !important;
+}
+
+.me-auto.navbar-nav a{
+    color: white;
+}
+
+.pac-target-input{
+    width: 75%;
+    height: 47px;
+
+    background: #F2F2F2;
+    border-radius: 10px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+
+    
+}
+
+.departure-date{
+    justify-content: center;
+    width: fit-content;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.departure-date button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.row-one{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    width: 75%;
+    justify-content: space-between;
+}
+
+.num-seats{
+    width: 40%;
+}
+
+.luggage-space{
+    width: 40%;
+}
+
+
+
+.row-two{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    width: 75%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row-two input{
+    width: 35%;
+    text-align: center;
+}
+
+.isUber.form-check input{
+    margin-right: 6px;
+}
+
+.create-form button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.view-buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    align-items: center;
+
+}
+
+.view-button-unselect{
+    width: 118px;
+    height: 47px;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    background-color: #F2F2F2;
+}
+
+.view-button-select{
+    background: #A1322A;
+    width: 118px;
+    height: 47px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+

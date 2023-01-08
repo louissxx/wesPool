@@ -1,0 +1,1 @@
+curl -X POST -d "client_id=G2YFImyjskKyA1NQ72vAKSahHi2j3pLuQ7heC3pa&client_secret=W9waqGEYM4fZYj8KhzvT59u1FucJPCo4V1hJCnxNCQdUsFcOtILuCrwj5FN1d99QlWNoR3USuXkgBtNRWOILFYL7mgYCfRqDkgCKb9vuEUhv538x2TCBhmkhAtKHdtdf&grant_type=password&username=hello&password=hellohello123" http://127.0.0.1:8000/auth/token/
