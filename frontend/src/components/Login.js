@@ -141,7 +141,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Login(){
     const navigate = useNavigate();
-    const clientId = '928202289442-9cin1krc6r8upqfj4uusmm6gu05eb40b.apps.googleusercontent.com'
+    const clientId = process.env.google_client_id
     // console.log(clientId)
     // const onSuccess = (res) => {
     //     console.log('success:', res);

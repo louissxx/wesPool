@@ -26,7 +26,7 @@ export default function MyReq(props) {
     
     return (
         <div className='user-req'>
-            <p>Comment: {props.text_req}</p>
+            {/* <p>Comment: {props.text_req}</p>
             <hr></hr>
             {(loading) && <p>Loading</p>}
             <div>
@@ -36,7 +36,8 @@ export default function MyReq(props) {
                         <button className='delete-req'>Delete</button>
                     </div>
                 )}
-            </div>
+            </div> */}
+            test
         </div>
     )
 }

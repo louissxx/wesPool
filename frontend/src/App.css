@@ -195,3 +195,29 @@
     color: white;
 }
 
+
+.form-button-unselect{
+    width: 118px;
+    height: 47px;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    background-color: #F2F2F2;
+}
+
+.form-button-select{
+    background: #A1322A;
+    width: 118px;
+    height: 47px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+
+.test-show{
+    color: #A1322A;
+}
+
+.test-not-show{
+    display: none;
+}

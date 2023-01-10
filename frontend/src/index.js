@@ -15,7 +15,7 @@ import Header from './components/Header';
 import NavBar from './components/NavBar';
 import Login from './components/Login';
 import Profile from './components/Profile';
-import MyRides from './components/MyRides';
+import UserRides from './components/UserRides';
 import Register from './components/Register';
 import Logout from './components/Logout';
 import PickRoute from './components/PickRoute';
@@ -34,7 +34,7 @@ root.render(
             <Route path='/info/:id' element={<RideInfo/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/profile' element={<Profile/>}/>
-            <Route path='/myrides' element={<MyRides/>}/>
+            <Route path='/myrides' element={<UserRides/>}/>
             <Route path='/register' element={<Register/>}/>
             <Route path='/logout' element={<Logout/>}></Route>
             <Route path='/maps/:form' element={<PickRoute/>}></Route>
