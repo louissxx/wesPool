@@ -221,3 +221,9 @@
 .test-not-show{
     display: none;
 }
+
+.req_by_info{
+    border: solid #467B8C 5px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}

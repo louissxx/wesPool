@@ -98,7 +98,7 @@ function SearchForm() {
     return (
         <Form className='search-form'>
                 {/* <Form.Label>Email address</Form.Label> */}
-                <Autocomplete placeholder="Enter Pickup Location" value = {src} name ='src' onChange = {handleLocation} apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+                <Autocomplete placeholder="Enter Pickup Location" value = {src} name ='src' onChange = {handleLocation} apiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}
                     onPlaceSelected={(place) => {
                         handleLocationSelect(place,1)
                     }}
@@ -106,7 +106,7 @@ function SearchForm() {
 
                 {/* <Form.Label>Email address</Form.Label> */}
                 {/* <Form.Control type="email" placeholder="Enter Dropoff Location" /> */}
-                <Autocomplete placeholder="Enter Dropoff Location" value= {dst} name ='dst' onChange = {handleLocation} apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+                <Autocomplete placeholder="Enter Dropoff Location" value= {dst} name ='dst' onChange = {handleLocation} apiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}
                     onPlaceSelected={(place) => {
                         handleLocationSelect(place,0)
                     }}

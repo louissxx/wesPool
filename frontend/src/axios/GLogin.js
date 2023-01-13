@@ -10,9 +10,10 @@ const GLogin = (res) => {
         token: res,
         backend: 'google-oauth2',
         grant_type: 'convert_token',
-        client_id:process.env.client_id,
-        client_secret:process.env.client_secret
+        client_id:process.env.REACT_APP_client_id,
+        client_secret:process.env.REACT_APP_client_secret
     }).then((res2)=>{
+        console.log(res2)
         localStorage.setItem('access_token',res2.data.access_token)
         localStorage.setItem('refresh_token',res2.data.refresh_token)
     });

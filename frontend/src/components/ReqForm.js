@@ -5,21 +5,16 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from "../axios"
 
 function ReqForm(props) {
-    const parseJwt= (token)=> {
-        if (!token) { return; }
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace('-', '+').replace('_', '/');
-        return JSON.parse(window.atob(base64));
-    }
+
     
-    const user_obj = parseJwt(localStorage.getItem('access_token'))
+    const user_token = localStorage.getItem('access_token')
 
 
     const navigate = useNavigate();
     const initialFormData = Object.freeze({
         text_req:'',
-        req_by:null,
-        req_to:null,
+        req_by:user_token,
+        req_to:props.data.host,
     });
 
     const [formData,updateFormData] = useState(initialFormData);
@@ -27,8 +22,6 @@ function ReqForm(props) {
     const handleChange = (e) => {
         updateFormData({
             ...formData,
-            req_by:user_obj.user_id,
-            req_to:props.id,
             [e.target.name]:e.target.value.trim()
         })
     }
@@ -36,23 +29,34 @@ function ReqForm(props) {
     
 
 
-    const handleSubmit = (e) => {
-        updateFormData({
-            text_req:formData.text_req,
-            req_by:user_obj.user_id,
-            req_to:props.id,
-        })
-        e.preventDefault();
-        console.log(formData,'lol')
-        axiosInstance.post('requests/',{
-            text_req:formData.text_req,
-            req_by:formData.req_by,
-            req_to:formData.req_to,
-        }).then((res)=>{
-            navigate('/')
-            console.log(res);
-            console.log(res.data);
-        })
+    // const handleSubmit = (e) => {
+
+    //     axiosInstance.post('requests/',{
+    //         text_req:formData.text_req,
+    //         req_by:formData.req_by,
+    //         req_to:formData.req_to,
+    //     }).then((res)=>{
+    //         // navigate('/')
+    //         console.log(res);
+    //         console.log(res.data);
+    //     })
+    //     console.log(formData,'lol')
+    // }
+
+    const handleJoin = (e) =>{
+        if(user_token){
+            axiosInstance.post('requests/',{
+                text_req:formData.text_req,
+                req_by:user_token,
+                req_to:props.data.id,
+            }).then((res)=>{
+                alert('post succesful')
+            }).catch(()=>alert('oop'))
+            // navigate('/maps/:'+formData)
+        }else{
+            alert("you are not logged in")
+        
+        }
     }
     return (
         <div>
@@ -61,14 +65,10 @@ function ReqForm(props) {
                     <Form.Label>Additional Comments</Form.Label>
                     <Form.Control as="textarea" rows={5} name='text_req' onChange={handleChange}/>
                 </Form.Group>
-                <Button onClick = {handleSubmit} variant="primary" type="submit">
+                <button onClick = {handleJoin} type="button">
                     Request
-                </Button>
+                </button>
             </Form>
-
-
-
-                
         </div>
     )
 }

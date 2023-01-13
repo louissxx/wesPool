@@ -8,16 +8,16 @@ import axiosInstance from "../axios"
 import axios from 'axios';
 import {Card, FormGroup} from 'react-bootstrap'
 
-function Create() {
+function CreateEdit(props) {
 
-    const [src, setSrc] = useState('');
-    const [dst, setDst] = useState('');
+    console.log(props.data)
+    const [src, setSrc] = useState(props.data.src);
+    const [dst, setDst] = useState(props.data.dst);
     const [startDate, setStartDate] = useState(new Date());
-    const [count, setCount] = useState(1);
-    const [isUber, setIsUber] = useState(false);
-    const [seats, setSeats] = useState(1);
+    const [isUber, setIsUber] = useState(props.data.uber);
+    const [seats, setSeats] = useState(props.data.seats);
     const [luggage, setLuggage] = useState(0);
-    const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState(props.data.price);
 
 
     const navigate = useNavigate();
@@ -27,7 +27,6 @@ function Create() {
         dst:dst,
         date:startDate,
         seats:seats,
-        luggage:luggage,
         price:price,
         group:[12],
         host:null,
@@ -145,22 +144,22 @@ function Create() {
 
         if(user_token){
             formData.host = user_token
-            console.log("HUUU")
-            axiosInstance.post('rides/',{
+            axiosInstance.put('rides/'+props.data.id+'/',{
                 date_time:"2023-01-07T19:07:40Z",
                 src:formData.src,
                 dst:formData.dst,
-                group:user_token,
                 seats:formData.seats,
                 price:formData.price,
                 uber:formData.uber,
                 host:formData.host,
+                group:[16],
+                id:props.data.id
             }).then((res)=>{
                 navigate('/')
                 alert('post succesful')
             }).catch(()=>alert('oop'))
-            console.log(formData)
             // navigate('/maps/:'+formData)
+            console.log(formData,':P')
         }else{
             alert("you are not logged in")
         
@@ -176,11 +175,12 @@ function Create() {
                 id='isUber'
                 label='is this an Uber Pool?'
                 onChange={handleChange}
+                value = {props.data.uber}
                 className='isUber'
                 name='uber'
             />
             {/* <Form.Label>Email address</Form.Label> */}
-            <Autocomplete placeholder="Enter Pickup Location" name ='src' onChange = {handleChange} apiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}
+            <Autocomplete placeholder="Enter Pickup Location" value = {src} name ='src' onChange = {handleChange} apiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}
                 onPlaceSelected={(place) => {
                     handleLocationSelect(place,1)
                 }}
@@ -188,7 +188,7 @@ function Create() {
 
                 {/* <Form.Label>Email address</Form.Label> */}
                 {/* <Form.Control type="email" placeholder="Enter Dropoff Location" /> */}
-            <Autocomplete placeholder="Enter Dropoff Location" name ='dst' onChange = {handleChange} apiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}
+            <Autocomplete placeholder="Enter Dropoff Location" value = {dst} name ='dst' onChange = {handleChange} apiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}
                 onPlaceSelected={(place) => {
                     handleLocationSelect(place,0)
                 }}
@@ -256,4 +256,4 @@ function Create() {
     )
 }
 
-export default Create
+export default CreateEdit

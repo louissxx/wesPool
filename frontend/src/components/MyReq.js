@@ -1,19 +1,24 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios';
 import Rides from './Rides';
+import axiosInstance from '../axios';
+import RideInfo from './RideInfo';
+import GetRideInto from './GetRideInto';
 
 export default function MyReq(props) {
     const [loading,setLoading] = useState(true);
     const [data, setData] = useState([]);
+    const [rideInfo, setRideInfo] = useState([]);
+    const [rideLoading,setRideLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () =>{
             setLoading(true);
             try {
-                const {data: response} = await axios.get('http://127.0.0.1:8000/api/rides/'+props.req_to);
+                const {data: response} = await axiosInstance.get('requests/');
+
                 setData(response);
                 setLoading(false);
-                console.log(data,'hi')
             } catch (error) {
                 console.error(error.message);
             }
@@ -22,22 +27,22 @@ export default function MyReq(props) {
         fetchData();
     }, []);
 
-
+    console.log(data,'hiii?')
     
     return (
         <div className='user-req'>
-            {/* <p>Comment: {props.text_req}</p>
-            <hr></hr>
-            {(loading) && <p>Loading</p>}
-            <div>
-                {(!loading) && (
-                    <div>
-                        <Rides key={data.id} src={data.src} dst={data.dst} price={data.price} date={data.date_time} seats={data.seats} host={data.host} uber={data.uber} id={data.id} group={data.group}/>
-                        <button className='delete-req'>Delete</button>
-                    </div>
-                )}
-            </div> */}
-            test
+            {!loading && (
+                <div>
+                    <h2>My Requests</h2>
+                            {data.map((req) => (
+                                <div key={req.id}>
+                                    <p>Your Comment: {req.text_req}</p>
+                                    <hr></hr>
+                                    <GetRideInto id={req.req_to}></GetRideInto>
+                                </div>            
+                            ))}
+                </div>
+            )}
         </div>
     )
 }

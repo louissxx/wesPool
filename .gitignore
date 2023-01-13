@@ -15,7 +15,7 @@ django-react
 /backend/backend/.env
 
 #frontend
-/frontend/.env.local
+/frontend/.env
 /frontend/.firebase/hosting.YnVpbGQ.cache
 /frontend/.firebase/hosting.cHVibGlj.cache
 /frontend/.firebaserc

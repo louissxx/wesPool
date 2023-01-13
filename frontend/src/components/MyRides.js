@@ -7,12 +7,6 @@ import axiosInstance from '../axios';
 export default function MyRides() {
     const [loading,setLoading] = useState(true);
     const [data, setData] = useState([]);
-    const parseJwt= (token)=> {
-        if (!token) { return; }
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace('-', '+').replace('_', '/');
-        return JSON.parse(window.atob(base64));
-    }
     
     const user_token = localStorage.getItem('access_token')
 
@@ -42,22 +36,6 @@ export default function MyRides() {
 
 
     
-    useEffect(() => {
-        const fetchData = async () =>{
-            setLoading(true);
-            try {
-                const {data: response} = await axiosInstance.get('requests/?req_by=3&req_to=');
-
-                setData2(response);
-                setLoading2(false);
-            } catch (error) {
-                console.error(error.message);
-                setLoading(false);
-            }
-        }
-
-        fetchData();
-    }, []);
     
     useEffect(() => {
         const fetchData = async () =>{
@@ -76,9 +54,9 @@ export default function MyRides() {
 
     console.log(data,data2,'hi there')
 
-    const handleDelete = (e) =>{
-        console.log(e)
-    }
+    // const handleDelete = (e) =>{
+    //     console.log(e)
+    // }
 
     return (
         // <div>
@@ -110,11 +88,6 @@ export default function MyRides() {
                         {data.map((item) => (
                             <div key={item.id}>
                                 <Rides src={item.src} dst={item.dst} price={item.price} date={item.date_time} seats={item.seats} host={item.host} uber={item.uber} id={item.id} group={item.group}/>
-                                <div className='view-buttons'>
-                                    <button id = {item.id} className = {select} name = 'edit' onClick={changeView}>Edit</button>
-                                    <button id = {item.id} className = {select} name = 'delete' onClick={handleDelete}>Delete</button>
-                                </div>
-                                {view}
                             </div>
                         ))}
                 </div>

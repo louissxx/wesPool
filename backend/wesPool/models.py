@@ -18,6 +18,18 @@ class Ride(models.Model):
 
     def __str__(self):
         return self.host.username+':'+self.src+'->'+self.dst
+    
+    def get_fields(self):
+        d = {}
+        for field in Ride._meta.fields:
+            d[field.name] = getattr(self,field.name)
+        for field in Ride._meta.many_to_many:
+            d[field.name] = getattr(self,field.name)
+        lst = []
+        for user in d['group'].all():
+            lst.append(user.id)
+        d['group']=lst
+        return d
 
     
 
@@ -29,5 +41,11 @@ class Requests(models.Model):
 
     def __str__(self):
         return str(self.req_to)
+
+    def get_fields(self):
+        d = {}
+        for field in Requests._meta.fields:
+            d[field.name] = getattr(self,field.name)
+        return d
 
 

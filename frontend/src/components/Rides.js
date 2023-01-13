@@ -6,6 +6,7 @@ import GetUser from './GetUser';
 
 
 function Rides(props) {
+    // console.log(props,'what in the waffle')
     const url = '/info/'+props.id.toString()
 
     return (

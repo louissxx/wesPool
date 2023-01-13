@@ -141,7 +141,8 @@ import { useNavigate } from 'react-router-dom';
 
 function Login(){
     const navigate = useNavigate();
-    const clientId = process.env.google_client_id
+    const clientId = process.env.REACT_APP_OAUTH_CLIENT_ID
+
     // console.log(clientId)
     // const onSuccess = (res) => {
     //     console.log('success:', res);
@@ -173,6 +174,16 @@ function Login(){
 
     const onSuccess = (res) => {
         console.log(res,'this is what i got')
+        let final;
+        console.log(res.profileObj.email,'HJIIJJH')
+        for (let i in res.profileObj.email) {
+            if(res.profileObj.email[i]==='@'){
+                final = res.profileObj.email.substring(0,i)
+                break;
+            }
+            i+=1
+        }
+        localStorage.setItem('username',final)
         setProfile(res.profileObj);
         setLogin(true)
         GLogin(res.accessToken)
@@ -183,15 +194,12 @@ function Login(){
     };
 
     const logOut = () => {
-
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
+        localStorage.removeItem('username');
         setProfile(null);
         setLogin(false)
         navigate('/')
-        
-
-
     };
 
     return (

@@ -30,7 +30,7 @@ function Content() {
     <div className='content'>
       <div className='view-buttons'>
         <button className = {select} name = 'find' onClick={changeView}>Find A Ride</button>
-        <button className = {unselect} name = 'create' onClick={changeView}>Offer A Ride</button>
+        <button className = {unselect} name = 'create' onClick={changeView}>Create A Ride</button>
       </div>
       {view}
     </div>
