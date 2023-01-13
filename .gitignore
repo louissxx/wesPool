@@ -1,7 +1,6 @@
 .DS_Store
 /frontend/node_modules
 django-react
-/backend/Procfile
 /backend/*.log
 /backend/*.pot
 /backend/*.pyc
@@ -11,7 +10,6 @@ django-react
 
 
 #backend
-/backend/requirements.txt
 /backend/backend/.env
 
 #frontend
@@ -19,6 +17,4 @@ django-react
 /frontend/.firebase/hosting.YnVpbGQ.cache
 /frontend/.firebase/hosting.cHVibGlj.cache
 /frontend/.firebaserc
-/frontend/build/logo192.png
-/frontend/build/logo512.png
 
