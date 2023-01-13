@@ -27,9 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-m7qdu_@h&wn^-3x)&j3q=%#n(fh8cyya9f(qms6jo3_bwow_)i'
 SECRET_KEY = os.environ.get('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     # 'wesPool.us-west-2.elasticbeanstalk.com',
