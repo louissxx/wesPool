@@ -70,7 +70,7 @@ class RideViewSet(viewsets.ModelViewSet):
         del request.data['group']
         request.data['host'] = user.id
         request.data['group'] = [user.id]
-        print(request.data,'HI AGAIN')
+        print(request.data['date_time'],'HI AGAIN')
         return super().create(request)
     
     def get_queryset(self, *args, **kwargs):
@@ -118,13 +118,11 @@ class RideViewSet(viewsets.ModelViewSet):
         old_ride = ride.get_fields()
         if user == old_ride['host']:
             for key in old_ride:
-                if key == 'date_time':
-                    continue
                 if key=='id' or key=='host':
                     continue
                 if key=='group':
                     if old_ride['group']!=self.request.data['group']:
-                        print('hi')
+                        print('hi',old_ride['group'],self.request.data['group'])
                 if self.request.data[key]!=old_ride[key]:
                     if key=="src":
                         ride.src = self.request.data[key]
@@ -138,6 +136,8 @@ class RideViewSet(viewsets.ModelViewSet):
                         ride.seats = self.request.data[key]
                     elif key=="price":
                         ride.price = self.request.data[key]
+                    elif key == 'date_time':
+                        ride.date_time = self.request.data[key]
                     ride.save(update_fields=[key])
         else:
             print('NOOOO')
