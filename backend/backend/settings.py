@@ -31,7 +31,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     # 'wesPool.us-west-2.elasticbeanstalk.com',
-    '127.0.0.1'
+    # '127.0.0.1'
     'wespool-production.up.railway.app',
 ]
 
